@@ -1,0 +1,16 @@
+{
+  "title": "Documentation",
+  "description": "The headless library",
+  "root": true,
+  "pages": [
+    "index",
+    "templates",
+    "backgrounds",
+    "cards",
+    "navigation",
+    "inputs",
+    "ai",
+    "texts",
+    "buttons"
+  ]
+}
