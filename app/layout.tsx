@@ -1,12 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { RootProvider } from "fumadocs-ui/provider/next";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import { ViewTransitions } from "next-view-transitions";
-import { META_THEME_COLORS, siteConfig } from "@/config/site";
+import { META_THEME_COLORS } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({
@@ -15,34 +11,9 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} - ${siteConfig.description}`,
-  description: siteConfig.description,
-  metadataBase: new URL(siteConfig.url),
-  applicationName: siteConfig.name,
-  keywords: [
-    "ui",
-    "components",
-    "Tailwind CSS",
-    "Next.js",
-    "shadcn",
-    "motion",
-    "react design",
-  ],
-  robots: "index, follow",
-  authors: [{ name: "Dorian Baffier", url: "https://x.com/dorianbaffier" }],
-  creator: "Dorian Baffier",
-  openGraph: {
-    title: siteConfig.name,
-    description: siteConfig.description,
-    url: siteConfig.url,
-    siteName: siteConfig.name,
-  },
-  twitter: {
-    card: "summary_large_image",
-    creator: "@dorianbaffier",
-    title: siteConfig.name,
-    description: siteConfig.description,
-  },
+  title: "Brood Hills Global",
+  description: "Institutional-grade energy market infrastructure for sub-Saharan Africa's growing trade economy.",
+  applicationName: "BroodHills Global",
 };
 
 export const viewport: Viewport = {
@@ -64,23 +35,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ViewTransitions>
-      <html lang="en" suppressHydrationWarning>
-        <body className={cn(geist.variable, geist.className, "antialiased")}>
-          <RootProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              disableTransitionOnChange
-              enableSystem
-            >
-              {children}
-            </ThemeProvider>
-          </RootProvider>
-          <Analytics />
-          <SpeedInsights />
-        </body>
-      </html>
-    </ViewTransitions>
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn(geist.variable, geist.className, "antialiased")}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          disableTransitionOnChange
+          enableSystem
+        >
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }
