@@ -1,12 +1,12 @@
 export const siteConfig = {
-  name: "KokonutUI",
-  url: "https://kokonutui.com",
-  ogImage: "https://kokonutui.com/og.jpg",
+  name: "BroodHills Global",
+  url: "https://broodhillsglobal.com",
+  ogImage: "https://broodhillsglobal.com/og.jpg",
   description:
-    "Collection of 100+ stunning UI components free and open source built with Next.js, React, Tailwind CSS, and Motion.",
+    "Empowering Trade Through Structured Energy Markets.",
   links: {
-    twitter: "https://twitter.com/dorianbaffier",
-    github: "https://github.com/kokonut-labs/kokonutui",
+    twitter: "https://twitter.com/broodhills",
+    github: "",
   },
 };
 
