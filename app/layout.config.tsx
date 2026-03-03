@@ -1,7 +1,6 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import Image from "next/image";
 import XIcon from "@/components/icons/x-icon";
-import HeaderProSmall from "@/components/landing/header-pro-small";
 import { siteConfig } from "@/config/site";
 
 export const baseOptions = (): BaseLayoutProps => ({
@@ -31,9 +30,6 @@ export const baseOptions = (): BaseLayoutProps => ({
       text: "Twitter",
       external: true,
     },
-    {
-      type: "custom",
-      children: <HeaderProSmall />,
-    },
+
   ],
 });
