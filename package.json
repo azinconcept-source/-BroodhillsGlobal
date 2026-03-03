@@ -1,10 +1,11 @@
 {
-  "name": "kokonut-ui",
+  "name": "broodhills",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
+    "broodhills@build": "next build",
     "start": "next start",
     "lint": "next lint"
   },

@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import PreviewContent from "./preview-content";
 import { Suspense } from "react";
-import Loader from "../kokonutui/loader";
+
 
 type PreviewProps = {
   children: React.ReactNode;
@@ -15,7 +15,7 @@ type PreviewProps = {
   isBlock?: boolean;
 };
 
-const PRE_PATH = "@kokonutui";
+const PRE_PATH = "@broodhills";
 
 export function Preview({
   children,
@@ -52,8 +52,8 @@ export function Preview({
             isBlock ? "md:p-0" : ""
           )}
         >
-          <Suspense fallback={<Loader />}>
-          {children}
+          <Suspense fallback={<div className="flex w-full items-center justify-center p-8">Loading...</div>}>
+            {children}
           </Suspense>
         </div>
       )}

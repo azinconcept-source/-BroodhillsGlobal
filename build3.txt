@@ -1,0 +1,103 @@
+﻿bun : $ next build
+At line:1 char:1
++ bun run build > 
+build3.log 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: ($ next build:   
+ String) [], Remote    
+Exception
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+ÔÜá Warning: Next.js 
+inferred your 
+workspace root, but it 
+may not be correct.
+ We detected multiple 
+lockfiles and selected 
+the directory of C:\Use
+rs\AZinTECH\package-loc
+k.json as the root 
+directory.
+ To silence this 
+warning, set 
+`turbopack.root` in 
+your Next.js config, 
+or consider removing 
+one of the lockfiles 
+if it's not needed.
+   See https://nextjs.o
+rg/docs/app/api-referen
+ce/config/next-config-j
+s/turbopack#root-direct
+ory for more 
+information.
+ Detected additional 
+lockfiles: 
+   * C:\Users\AZinTECH\
+Broodhillsglobal.com\sh
+adcn\bun.lock
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build 
+failed with 1 errors:
+./Broodhillsglobal.com/
+shadcn/app/globals.css:
+12:2
+Module not found: 
+Can't resolve 
+'tw-animate-css'
+[0m [90m 10 |[39m 
+[90m/* @import "fumado
+cs-ui/css/dusk.css"; 
+*/[39m
+ [90m 11 |[39m
+[31m[1m>[22m[39m[9
+0m 12 |[39m [33m@[39
+m[36mimport[39m [32m
+"tw-animate-css"[39m[
+33m;[39m
+ [90m    |[39m  
+[31m[1m^[22m[39m
+ [90m 13 |[39m
+ [90m 14 |[39m 
+[33m@[39msource [32m
+"../node_modules/fumado
+cs-ui/dist/**/*.js"[39
+m[33m;[39m
+ [90m 15 |[39m[0m
+
+
+
+Import trace:
+  Client Component 
+Browser:
+    ./Broodhillsglobal.
+com/shadcn/app/globals.
+css [Client Component 
+Browser]
+    ./Broodhillsglobal.
+com/shadcn/app/layout.t
+sx [Server Component]
+
+https://nextjs.org/docs
+/messages/module-not-fo
+und
+
+
+    at <unknown> (./Bro
+odhillsglobal.com/shadc
+n/app/globals.css:12:2)
+    at <unknown> (https
+://nextjs.org/docs/mess
+ages/module-not-found)
+error: script "build" 
+exited with code 1

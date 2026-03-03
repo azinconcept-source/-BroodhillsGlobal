@@ -8,8 +8,8 @@ export function Footer() {
     <footer className="relative w-full overflow-hidden border-black/10 border-t dark:border-white/10">
       {/* Big Background Text */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
-        <span className="select-none whitespace-nowrap font-black text-[25vw] text-black/4 leading-none tracking-tighter md:text-[20vw] lg:text-[18vw] xl:text-[15vw] dark:text-white/4">
-          Kokonut UI
+        <span className="select-none whitespace-nowrap font-black text-[20vw] text-black/4 leading-none tracking-tighter md:text-[15vw] lg:text-[12vw] xl:text-[10vw] dark:text-white/4">
+          BroodHills
         </span>
       </div>
       <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
@@ -19,21 +19,19 @@ export function Footer() {
             <Link href="/" target="_blank">
               <div className="flex items-center">
                 <span className="inline-flex items-center font-bold tracking-tight">
-                  <Image alt="logo" height={28} src="/logo.svg" width={28} />
-
-                  <span className="ml-1 sm:ml-0">Kokonut UI</span>
+                  <Image alt="BroodHills Logo" height={28} src="/logo.svg" width={28} />
+                  <span className="ml-1 sm:ml-0">BroodHills Global</span>
                 </span>
               </div>
             </Link>
             <div className="flex flex-col gap-1">
               <Link
                 className="flex max-w-xs items-center justify-center gap-1 text-black/80 text-xs tracking-tight hover:text-primary sm:text-sm dark:text-white/60 dark:hover:text-primary"
-                href="https://dorianbaffier.com"
+                href="https://broodhills.com"
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Built by <span className="font-semibold">Dorian Baffier</span>
-                <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-black transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 dark:text-white" />
+                © {new Date().getFullYear()} BroodHills Global. All Rights Reserved.
               </Link>
             </div>
           </div>
@@ -44,27 +42,25 @@ export function Footer() {
               <li>
                 <Link
                   className="text-black/70 text-sm transition-colors hover:text-black dark:text-white/70 dark:hover:text-white"
-                  href="/components"
+                  href="/services"
                 >
-                  Components
+                  Services
                 </Link>
               </li>
               <li>
                 <Link
                   className="text-black/70 text-sm transition-colors hover:text-black dark:text-white/70 dark:hover:text-white"
-                  href="https://kokonutui.pro/templates"
-                  target="_blank"
+                  href="/about"
                 >
-                  Templates
+                  About Us
                 </Link>
               </li>
               <li>
                 <Link
                   className="text-black/70 text-sm transition-colors hover:text-black dark:text-white/70 dark:hover:text-white"
-                  href="https://kokonutui.pro?utm_source=kokonutui.com&utm_medium=footer"
-                  target="_blank"
+                  href="/contact"
                 >
-                  Kokonut UI - Pro
+                  Contact
                 </Link>
               </li>
               <li>
@@ -74,27 +70,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  Github Open Source
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-black/70 text-sm transition-colors hover:text-black dark:text-white/70 dark:hover:text-white"
-                  href="https://vercel.com/blog/spring25-oss-program#kokonutui"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Vercel OSS 2025
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-black/70 text-sm transition-colors hover:text-black dark:text-white/70 dark:hover:text-white"
-                  href="https://aris.studio"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Aris Studio
+                  Github
                 </Link>
               </li>
               <li>
