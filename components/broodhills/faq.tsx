@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { BLACK, BORDER, GOLD, GOLD_DARK, GRAY, LIGHTGRAY, WHITE } from "./constants";
+import { useResponsive } from "@/hooks/use-responsive";
 
 export function FAQSection() {
     const [open, setOpen] = useState(0);
     const [form, setForm] = useState({ name: "", last: "", email: "", msg: "" });
+    const { isMobile } = useResponsive();
 
     const faqs = [
         { q: "Where are your trading operations located?", a: "Our trading operations are active across several countries, including Nigeria, Ghana, Cameroon, and Côte d'Ivoire — each chosen for its rich hydrocarbon deposits and stable regulatory environment." },
@@ -18,12 +20,40 @@ export function FAQSection() {
     type Field = "name" | "last" | "email" | "msg";
 
     return (
-        <section style={{ padding: "80px 6%", background: WHITE }}>
-            <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72 }}>
-                {/* Form */}
+        <section style={{ padding: isMobile ? "60px 5%" : "80px 6%", background: WHITE }}>
+            <div style={{
+                maxWidth: 1200, margin: "0 auto",
+                display: "grid",
+                gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+                gap: isMobile ? 48 : 72,
+            }}>
+                {/* On mobile: FAQ accordion appears first */}
+                {isMobile && (
+                    <div>
+                        <h2 style={{ fontFamily: "Fraunces, serif", fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700, color: BLACK, margin: "0 0 24px" }}>
+                            Frequently Asked Questions
+                        </h2>
+                        {faqs.map((faq, i) => (
+                            <div key={i} style={{ borderBottom: `1px solid ${BORDER}` }}>
+                                <button onClick={() => setOpen(open === i ? -1 : i)}
+                                    style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 0", background: "none", border: "none", cursor: "pointer", textAlign: "left" }}>
+                                    <span style={{ fontFamily: "DM Sans, sans-serif", fontSize: 14, fontWeight: 600, color: BLACK, paddingRight: 16 }}>{faq.q}</span>
+                                    <span style={{ color: open === i ? GOLD : GRAY, fontSize: 18, flexShrink: 0, transition: "transform 0.2s", transform: open === i ? "rotate(180deg)" : "none" }}>∨</span>
+                                </button>
+                                {open === i && (
+                                    <div style={{ paddingBottom: 18 }}>
+                                        <p style={{ fontFamily: "DM Sans, sans-serif", fontSize: 13, color: GRAY, lineHeight: 1.75, margin: 0 }}>{faq.a}</p>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                )}
+
+                {/* Contact Form */}
                 <div>
                     <h2 style={{ fontFamily: "Fraunces, serif", fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700, color: BLACK, margin: "0 0 12px" }}>
-                        Frequently<br />Asked Questions
+                        {isMobile ? "Ask a Question" : <>Frequently<br />Asked Questions</>}
                     </h2>
                     <p style={{ fontFamily: "DM Sans, sans-serif", fontSize: 13, color: GRAY, marginBottom: 32, lineHeight: 1.7 }}>
                         Want to ask another question? Please fill out this form below.
@@ -47,26 +77,28 @@ export function FAQSection() {
                         <textarea value={form.msg} onChange={e => setForm(p => ({ ...p, msg: e.target.value }))} placeholder="Your message..."
                             style={{ width: "100%", padding: "10px 12px", borderRadius: 6, border: `1px solid ${BORDER}`, background: LIGHTGRAY, fontFamily: "DM Sans, sans-serif", fontSize: 13, color: BLACK, outline: "none", boxSizing: "border-box", resize: "vertical", minHeight: 100 }} />
                     </div>
-                    <button style={{ background: GOLD, color: BLACK, border: "none", borderRadius: 8, padding: "12px 28px", fontFamily: "DM Sans, sans-serif", fontSize: 14, fontWeight: 600, cursor: "pointer" }}>Submit</button>
+                    <button style={{ background: GOLD, color: BLACK, border: "none", borderRadius: 8, padding: "12px 28px", fontFamily: "DM Sans, sans-serif", fontSize: 14, fontWeight: 600, cursor: "pointer", width: isMobile ? "100%" : "auto" }}>Submit</button>
                 </div>
 
-                {/* Accordion */}
-                <div style={{ paddingTop: 10 }}>
-                    {faqs.map((faq, i) => (
-                        <div key={i} style={{ borderBottom: `1px solid ${BORDER}` }}>
-                            <button onClick={() => setOpen(open === i ? -1 : i)}
-                                style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 0", background: "none", border: "none", cursor: "pointer", textAlign: "left" }}>
-                                <span style={{ fontFamily: "DM Sans, sans-serif", fontSize: 14, fontWeight: 600, color: BLACK, paddingRight: 16 }}>{faq.q}</span>
-                                <span style={{ color: open === i ? GOLD : GRAY, fontSize: 18, flexShrink: 0, transition: "transform 0.2s", transform: open === i ? "rotate(180deg)" : "none" }}>∨</span>
-                            </button>
-                            {open === i && (
-                                <div style={{ paddingBottom: 18 }}>
-                                    <p style={{ fontFamily: "DM Sans, sans-serif", fontSize: 13, color: GRAY, lineHeight: 1.75, margin: 0 }}>{faq.a}</p>
-                                </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
+                {/* Desktop: FAQ accordion on right */}
+                {!isMobile && (
+                    <div style={{ paddingTop: 10 }}>
+                        {faqs.map((faq, i) => (
+                            <div key={i} style={{ borderBottom: `1px solid ${BORDER}` }}>
+                                <button onClick={() => setOpen(open === i ? -1 : i)}
+                                    style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 0", background: "none", border: "none", cursor: "pointer", textAlign: "left" }}>
+                                    <span style={{ fontFamily: "DM Sans, sans-serif", fontSize: 14, fontWeight: 600, color: BLACK, paddingRight: 16 }}>{faq.q}</span>
+                                    <span style={{ color: open === i ? GOLD : GRAY, fontSize: 18, flexShrink: 0, transition: "transform 0.2s", transform: open === i ? "rotate(180deg)" : "none" }}>∨</span>
+                                </button>
+                                {open === i && (
+                                    <div style={{ paddingBottom: 18 }}>
+                                        <p style={{ fontFamily: "DM Sans, sans-serif", fontSize: 13, color: GRAY, lineHeight: 1.75, margin: 0 }}>{faq.a}</p>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
         </section>
     );

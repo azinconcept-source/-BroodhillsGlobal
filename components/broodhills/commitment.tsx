@@ -1,11 +1,20 @@
 "use client";
 
 import { BLACK, BORDER, GRAY, LIME_BRIGHT, OLIVE, WHITE } from "./constants";
+import { useResponsive } from "@/hooks/use-responsive";
 
 export function CommitmentSection() {
+    const { isMobile, isTablet } = useResponsive();
+
     return (
-        <section style={{ padding: "80px 6%", background: WHITE, borderTop: `1px solid ${BORDER}` }}>
-            <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
+        <section style={{ padding: isMobile ? "60px 5%" : "80px 6%", background: WHITE, borderTop: `1px solid ${BORDER}` }}>
+            <div style={{
+                maxWidth: 1200, margin: "0 auto",
+                display: "grid",
+                gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+                gap: isMobile ? 32 : 80,
+                alignItems: "start",
+            }}>
                 <div>
                     <blockquote style={{
                         fontFamily: "Fraunces, serif", fontSize: "clamp(20px, 2.5vw, 28px)", fontStyle: "italic",
@@ -19,7 +28,11 @@ export function CommitmentSection() {
                     <p style={{ fontFamily: "DM Sans, sans-serif", fontSize: 14, color: GRAY, lineHeight: 1.8, marginBottom: 32 }}>
                         Our dedication to compliant transactions, innovative trading technologies, and institutional partnership ensures that we not only structure valuable crude trades but also deliver them with complete transparency and legal integrity.
                     </p>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20 }}>
+                    <div style={{
+                        display: "grid",
+                        gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr",
+                        gap: 20,
+                    }}>
                         {[
                             { year: "2016: Our Founding", body: "Established with a clear vision to professionalise oil trading in West Africa through structured, compliant infrastructure." },
                             { year: "2018: Expansion & Innovation", body: "By 2018, Brood Hills had expanded into new trading corridors. The year marked significant strides in research and SBLC workflows." },

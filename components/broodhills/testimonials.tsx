@@ -1,10 +1,14 @@
 "use client";
 
-import { BLACK, BORDER, GOLD, GOLD_DARK, GRAY, LIGHTGRAY, LIME_BRIGHT, WHITE } from "./constants";
+import { useState } from "react";
+import { BLACK, BORDER, GOLD, GOLD_DARK, GRAY, LIGHTGRAY, WHITE } from "./constants";
+import { useResponsive } from "@/hooks/use-responsive";
 
 export function TestimonialsSection() {
+    const { isMobile } = useResponsive();
+
     return (
-        <section style={{ padding: "80px 6%", background: LIGHTGRAY }}>
+        <section style={{ padding: isMobile ? "60px 5%" : "80px 6%", background: LIGHTGRAY }}>
             <div style={{ maxWidth: 1200, margin: "0 auto" }}>
                 <div style={{ textAlign: "center", marginBottom: 52 }}>
                     <h2 style={{ fontFamily: "Fraunces, serif", fontSize: "clamp(26px, 3vw, 40px)", fontWeight: 700, color: BLACK, margin: 0 }}>
@@ -12,7 +16,12 @@ export function TestimonialsSection() {
                     </h2>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
+                <div style={{
+                    display: "grid",
+                    gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+                    gap: isMobile ? 36 : 48,
+                    alignItems: "center",
+                }}>
                     {/* Video */}
                     <div style={{ position: "relative", borderRadius: 14, overflow: "hidden", aspectRatio: "16/10" }}>
                         <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg,#0a1520 0%,#1a3050 100%)", position: "relative" }}>
@@ -43,11 +52,11 @@ export function TestimonialsSection() {
 
                     {/* Quote */}
                     <div>
-                        <div style={{ fontSize: 48, color: LIME_BRIGHT, fontFamily: "Fraunces, serif", lineHeight: 1, marginBottom: 8, opacity: 0.8 }}>"</div>
-                        <blockquote style={{ fontFamily: "DM Sans, sans-serif", fontSize: 16, color: BLACK, lineHeight: 1.8, margin: "0 0 28px", fontWeight: 400 }}>
+                        <div style={{ fontSize: 48, color: "#C8DC0A", fontFamily: "Fraunces, serif", lineHeight: 1, marginBottom: 8, opacity: 0.8 }}>"</div>
+                        <blockquote style={{ fontFamily: "DM Sans, sans-serif", fontSize: isMobile ? 15 : 16, color: BLACK, lineHeight: 1.8, margin: "0 0 28px", fontWeight: 400 }}>
                             <strong>Brood Hills has been an exceptional partner</strong> in structuring our crude oil transactions across the Gulf of Guinea. Their expertise and meticulous compliance approach have significantly improved our deal efficiency and capital protection.
                         </blockquote>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
                             <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
                                 <div style={{ width: 44, height: 44, borderRadius: "50%", background: `linear-gradient(135deg, ${GOLD}, ${GOLD_DARK})`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                                     <span style={{ fontFamily: "Fraunces, serif", fontWeight: 700, color: BLACK, fontSize: 16 }}>J</span>

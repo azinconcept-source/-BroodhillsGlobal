@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { BLACK, DARK, WHITE } from "./constants";
+import { useResponsive } from "@/hooks/use-responsive";
 
 const LIME = "#C8DC0A";
 
 type ServiceTab = "deal-structuring" | "instrument-management" | "trade-operations";
 
 export function BroodFooter({ openService }: { openService: (tab: ServiceTab) => void }) {
+    const { isMobile, isTablet } = useResponsive();
 
     const companyLinks: { label: string; href?: string; action?: () => void }[] = [
         { label: "About Us", href: "/broodhills/about" },
@@ -24,12 +26,15 @@ export function BroodFooter({ openService }: { openService: (tab: ServiceTab) =>
 
     const connectLinks = ["Facebook", "Twitter / X", "LinkedIn", "Instagram"];
 
+    const gridCols = isMobile ? "1fr 1fr" : isTablet ? "1fr 1fr" : "1.5fr 1fr 1fr 1fr";
+
     return (
         <>
-            <footer style={{ background: DARK, padding: "48px 6% 28px", borderTop: "1px solid #1a1a1a" }}>
+            <footer style={{ background: DARK, padding: isMobile ? "40px 5% 24px" : "48px 6% 28px", borderTop: "1px solid #1a1a1a" }}>
                 <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-                    <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: 48, marginBottom: 40 }}>
-                        <div>
+                    <div style={{ display: "grid", gridTemplateColumns: gridCols, gap: isMobile ? 28 : 48, marginBottom: 40 }}>
+                        {/* Brand — spans full row on mobile */}
+                        <div style={{ gridColumn: isMobile ? "1 / -1" : "auto" }}>
                             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
                                 <img
                                     src="https://res.cloudinary.com/dycc51iwn/image/upload/v1772463804/broodhills_2_oiovoo_e_background_removal_f_png_trm008.png"
@@ -100,9 +105,9 @@ export function BroodFooter({ openService }: { openService: (tab: ServiceTab) =>
                         </div>
                     </div>
 
-                    <div style={{ borderTop: "1px solid #1a1a1a", paddingTop: 20, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+                    <div style={{ borderTop: "1px solid #1a1a1a", paddingTop: 20, display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center", gap: 12 }}>
                         <span style={{ fontFamily: "DM Sans, sans-serif", fontSize: 11, color: "#444" }}>© 2024 Brood Hills Global Energy Marketplace. All rights reserved.</span>
-                        <div style={{ display: "flex", gap: 20 }}>
+                        <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
                             {["Privacy Policy", "Terms of Service", "Compliance"].map(l => (
                                 <a key={l} href="#" style={{ fontFamily: "DM Sans, sans-serif", fontSize: 11, color: "#444", textDecoration: "none" }}>{l}</a>
                             ))}

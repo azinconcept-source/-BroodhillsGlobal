@@ -1,10 +1,13 @@
 "use client";
 
 import { BLACK, GOLD, GOLD_DARK, GRAY, LIGHTGRAY } from "./constants";
+import { useResponsive } from "@/hooks/use-responsive";
 
 export function OpportunitiesSection() {
+    const { isMobile } = useResponsive();
+
     return (
-        <section style={{ padding: "80px 6%", background: LIGHTGRAY }}>
+        <section style={{ padding: isMobile ? "60px 5%" : "80px 6%", background: LIGHTGRAY }}>
             <div style={{ maxWidth: 1200, margin: "0 auto" }}>
                 <div style={{ textAlign: "center", marginBottom: 56 }}>
                     <h2 style={{ fontFamily: "Fraunces, serif", fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 700, color: BLACK, margin: "0 0 14px" }}>
@@ -15,7 +18,12 @@ export function OpportunitiesSection() {
                     </p>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
+                <div style={{
+                    display: "grid",
+                    gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+                    gap: isMobile ? 36 : 48,
+                    alignItems: "center",
+                }}>
                     <div style={{ position: "relative" }}>
                         <div style={{ borderRadius: 16, overflow: "hidden", aspectRatio: "4/3", background: "linear-gradient(160deg,#1a2a1a 0%,#0d2211 50%,#1a3a0d 100%)", position: "relative" }}>
                             <svg viewBox="0 0 480 360" style={{ width: "100%", height: "100%", position: "absolute" }}>

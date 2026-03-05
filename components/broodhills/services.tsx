@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { BLACK, BORDER, GOLD, GOLD_DARK, GRAY, LIME_BRIGHT, WHITE } from "./constants";
+import { useResponsive } from "@/hooks/use-responsive";
 
 function ServiceCard({ service, index }: { service: { title: string; body: string }; index: number }) {
     const [hov, setHov] = useState(false);
@@ -75,14 +76,18 @@ function ServiceCard({ service, index }: { service: { title: string; body: strin
 }
 
 export function ServicesSection() {
+    const { isMobile, isTablet } = useResponsive();
+
     const services = [
         { title: "Deal Structuring", body: "Our team of experts performs comprehensive deal structuring — from SPA drafting through NCNDA/IMFPA execution — identifying and maximising viable trade opportunities." },
         { title: "Instrument Management", body: "From instrument issuance to confirmation, we coordinate SBLC, LC, and DLC workflows between issuing banks and beneficiaries to accelerate deal progression." },
         { title: "Trade Operations", body: "Our operational arm manages logistics milestones — vessel assignment, cargo inspection, loading confirmation — through to settlement and investor distribution." },
     ];
 
+    const gridCols = isMobile ? "1fr" : isTablet ? "1fr 1fr" : "repeat(3, 1fr)";
+
     return (
-        <section style={{ padding: "80px 6%", background: WHITE }}>
+        <section style={{ padding: isMobile ? "60px 5%" : "80px 6%", background: WHITE }}>
             <div style={{ maxWidth: 1200, margin: "0 auto" }}>
                 <div style={{ textAlign: "center", marginBottom: 52 }}>
                     <h2 style={{ fontFamily: "Fraunces, serif", fontSize: "clamp(26px, 3vw, 40px)", fontWeight: 700, color: BLACK, margin: "0 0 14px" }}>
@@ -92,7 +97,7 @@ export function ServicesSection() {
                         Explore our range of specialised solutions designed to optimise every aspect of your crude oil transaction.
                     </p>
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+                <div style={{ display: "grid", gridTemplateColumns: gridCols, gap: 24 }}>
                     {services.map((s, i) => <ServiceCard key={i} service={s} index={i} />)}
                 </div>
                 <div style={{ textAlign: "center", marginTop: 36 }}>
